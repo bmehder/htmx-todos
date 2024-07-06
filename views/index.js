@@ -19,7 +19,7 @@ const createViewApp = () => /*html*/ `
             hx-on::after-request="document.querySelector('form').reset()"
             hx-target=".list"
           >
-            <input type="text" class="p-0-5" name="text" placeholder="Add todo...">
+            <input type="text" class="p-0-5" name="text" placeholder="Enter todo...">
             <button class="gray-10 hover-gray-0 hover-outline-2">
               Add Todo
             </button>

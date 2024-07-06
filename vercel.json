@@ -1,0 +1,17 @@
+{
+	"name": "htmx-todos",
+	"version": 2,
+	"public": true,
+	"builds": [
+		{
+			"src": "app.js",
+			"use": "@vercel/node"
+		}
+	],
+	"routes": [
+		{
+			"src": "/((?!.*\\.\\w+$).*)",
+			"dest": "/app.js"
+		}
+	]
+}

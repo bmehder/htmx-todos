@@ -7,8 +7,7 @@ const createViewTodo = todo => /*html*/ `
       class="gray-10 hover-gray-0 hover-outline-2"
       hx-delete="todos/${todo.id}"
       hx-confirm="Are you sure you want to delete this todo item?"
-      hx-target="closest li"
-      hx-swap="outerHTML"
+      hx-target=".list"
     >
       X
     </button>

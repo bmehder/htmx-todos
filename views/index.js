@@ -31,7 +31,7 @@ const createViewApp = () => /*html*/ `
             </button>
           </form>
             
-          <div class="list" hx-get="/todos" hx-trigger="load"></div>
+          <div class="list flow" hx-get="/todos" hx-trigger="load"></div>
         </div>
       </main>
     </body

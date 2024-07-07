@@ -35,7 +35,7 @@ const routeHandlers = {
 
 		todos.splice(idx, 1)
 
-		res.send()
+		res.send(createViewList(todos))
 	},
 }
 

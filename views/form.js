@@ -10,6 +10,7 @@ const createViewForm = () => /*html*/ `
       class="p-0-5"
       name="text"
       placeholder="Enter new todo..."
+      required
     >
     <button class="gray-10 hover-gray-0 hover-outline-2">
       <ion-icon name="add" size="large"></ion-icon> Add Todo

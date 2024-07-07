@@ -3,7 +3,7 @@ import createViewForm from '../views/form.js'
 import createViewList from '../views/list.js'
 
 // Data Model
-const todos = [
+let todos = [
 	{
 		id: '1',
 		text: 'Buy Milk',
@@ -16,6 +16,9 @@ const todos = [
 	},
 ]
 
+// Helper function
+const getTodoIndexById = id => todos.findIndex(todo => todo.id === id)
+
 // Route handlers
 const routeHandlers = {
 	getAppView: (_, res) => res.send(createViewApp()),
@@ -27,25 +30,26 @@ const routeHandlers = {
 	addTodo: (req, res) => {
 		const { text } = req.body
 
-		text && todos.push({ id: crypto.randomUUID(), text, complete: false })
+		todos = [...todos, { id: crypto.randomUUID(), text, complete: false }]
 
 		res.send(createViewList(todos))
 	},
 
 	toggleTodoComplete: (req, res) => {
-		const { id } = req.params
-		const idx = todos.findIndex(todo => todo.id === id)
+		const idx = getTodoIndexById(req.params.id)
 
-		todos[idx] = { ...todos[idx], complete: !todos[idx].complete }
+		todos = todos.toSpliced(idx, 1, {
+			...todos[idx],
+			complete: !todos[idx].complete,
+		})
 
 		res.send(createViewList(todos))
 	},
 
 	deleteTodo: (req, res) => {
-		const { id } = req.params
-		const idx = todos.findIndex(todo => todo.id === id)
+		const idx = getTodoIndexById(req.params.id)
 
-		todos.splice(idx, 1)
+		todos = todos.toSpliced(idx, 1)
 
 		res.send(createViewList(todos))
 	},

@@ -4,6 +4,7 @@ const createViewApp = () => /*html*/ `
     <head>
       <link rel="shortcut icon" href="#">
       <title>HTMX Todo List</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://bmehder.github.io/cheeky-css/cheeky.css" />
       <script src="https://unpkg.com/htmx.org@2.0.0"></script>
     </head>
@@ -19,7 +20,12 @@ const createViewApp = () => /*html*/ `
             hx-on::after-request="document.querySelector('form').reset()"
             hx-target=".list"
           >
-            <input type="text" class="p-0-5" name="text" placeholder="Enter todo...">
+            <input
+              type="text"
+              class="p-0-5"
+              name="text"
+              placeholder="Enter todo..."
+            >
             <button class="gray-10 hover-gray-0 hover-outline-2">
               Add Todo
             </button>

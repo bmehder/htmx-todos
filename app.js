@@ -1,8 +1,8 @@
 import express from 'express'
 import todos from './models/todos.js'
 import createViewApp from './views/index.js'
+import createViewForm from './views/form.js'
 import createViewList from './views/list.js'
-import createViewTodoText from './views/todoText.js'
 
 // Create server
 const app = express()
@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false }))
 const routeHandlers = {
 	getAppView: (_, res) => res.send(createViewApp()),
 	getTodos: (_, res) => res.send(createViewList(todos)),
+	getForm: (_, res) => res.send(createViewForm(todos)),
 	addTodo: (req, res) => {
 		const { text } = req.body
 
@@ -27,7 +28,7 @@ const routeHandlers = {
 
 		todos[idx] = { ...todos[idx], complete: !todos[idx].complete }
 
-		res.send(createViewTodoText(todos[idx]))
+		res.send(createViewList(todos))
 	},
 	deleteTodo: (req, res) => {
 		const { id } = req.params
@@ -43,6 +44,8 @@ const routeHandlers = {
 app.get('/', routeHandlers.getAppView)
 
 app.get('/todos', routeHandlers.getTodos)
+
+app.get('/form', routeHandlers.getForm)
 
 app.post('/todos', routeHandlers.addTodo)
 

@@ -1,4 +1,4 @@
-import createViewTodo from './todo.js'
+import createViewTodo from './createViewTodo.js'
 
 const createViewList = todos => /*html*/ `
   

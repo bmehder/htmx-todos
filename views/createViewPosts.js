@@ -1,4 +1,4 @@
-import createPost from './post.js'
+import createPost from './createPost.js'
 
 const createViewPosts = (posts, option = 'id') => /*html*/ `
   <div class="posts flow"> 

@@ -1,4 +1,4 @@
-import createViewTodoText from './todoText.js'
+import createViewTodoText from './createViewTodoText.js'
 
 const createViewTodo = todo => /*html*/ `
   <li class="flex space-between align-items-center gap-1">

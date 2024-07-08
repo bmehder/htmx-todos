@@ -1,8 +1,8 @@
 import fetch from 'node-fetch'
-import createViewApp from '../views/index.js'
-import createViewForm from '../views/form.js'
-import createViewList from '../views/list.js'
-import createViewPosts from '../views/posts.js'
+import createViewApp from '../views/createViewApp.js'
+import createViewForm from '../views/createViewForm.js'
+import createViewList from '../views/createViewList.js'
+import createViewPosts from '../views/createViewPosts.js'
 
 // Data Model
 let todos = [

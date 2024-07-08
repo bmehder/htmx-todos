@@ -1,49 +1,32 @@
 import fetch from 'node-fetch'
 import createViewApp from '../views/createViewApp.js'
-import createViewForm from '../views/createViewForm.js'
-import createViewList from '../views/createViewList.js'
-import createViewPosts from '../views/createViewPosts.js'
+import createViewTodoForm from '../views/todos/createViewTodoForm.js'
+import createViewTodos from '../views/todos/createViewTodos.js'
+import createViewPosts from '../views/posts/createViewPosts.js'
 
-// Data Model
-let todos = [
-	{
-		id: '1',
-		text: 'Buy Milk',
-		complete: false,
-	},
-	{
-		id: '2',
-		text: 'Buy Eggs',
-		complete: true,
-	},
-]
+// Data Models
+let todos = []
 
 // Helper function
 const getTodoIndexById = id => todos.findIndex(todo => todo.id === id)
 
 // Route handlers
 const routeHandlers = {
-	getAppView: (_, res) => res.send(createViewApp()),
+	getApp: (_, res) => res.send(createViewApp()),
 
-	getTodos: (_, res) => res.send(createViewList(todos)),
+	getTodos: (_, res) => res.send(createViewTodos(todos)),
 
-	getForm: (_, res) => res.send(createViewForm()),
+	getForm: (_, res) => res.send(createViewTodoForm()),
 
 	addTodo: (req, res) => {
 		const { text } = req.body
 
 		todos = [...todos, { id: crypto.randomUUID(), text, complete: false }]
 
-		res.send(createViewList(todos))
+		res.send(createViewTodos(todos))
 	},
 
-	getPosts: (_, res) => {
-		fetch('https://jsonplaceholder.typicode.com/posts')
-			.then(res => res.json())
-			.then(data => res.send(createViewPosts(data)))
-	},
-
-	getPostsByTitleAsc: (req, res) => {
+	getPosts: (req, res) => {
 		const { order } = req.body
 
 		const sortByTitleAsc = (a, b) =>
@@ -75,7 +58,7 @@ const routeHandlers = {
 			complete: !todos[idx].complete,
 		})
 
-		res.send(createViewList(todos))
+		res.send(createViewTodos(todos))
 	},
 
 	deleteTodo: (req, res) => {
@@ -83,7 +66,7 @@ const routeHandlers = {
 
 		todos = todos.toSpliced(idx, 1)
 
-		res.send(createViewList(todos))
+		res.send(createViewTodos(todos))
 	},
 }
 

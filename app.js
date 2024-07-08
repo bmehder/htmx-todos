@@ -8,7 +8,7 @@ const app = express()
 app.use(express.urlencoded({ extended: false }))
 
 // Routes
-app.get('/', routeHandlers.getAppView)
+app.get('/', routeHandlers.getApp)
 
 app.get('/todos', routeHandlers.getTodos)
 
@@ -16,9 +16,7 @@ app.get('/form', routeHandlers.getForm)
 
 app.post('/todos', routeHandlers.addTodo)
 
-app.get('/posts', routeHandlers.getPosts)
-
-app.post('/posts/order', routeHandlers.getPostsByTitleAsc)
+app.post('/posts/order', routeHandlers.getPosts)
 
 app.put('/todos/:id', routeHandlers.toggleTodoComplete)
 

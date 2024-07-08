@@ -12,17 +12,21 @@ const createViewApp = () => /*html*/ `
   
     <body>
       <main class="dvh-100 bg-gray-10 gray-0">
-        <div class="max-width-sm mx-auto p-2 flow">
+        <div class="max-width-sm mx-auto p-2 text-flow-2">
           <h1 class="text-center">HTMX Todo List</h1>
-          <div hx-trigger="load" hx-get="/form" hx-swap="outerHTML"></div>
-          <div hx-trigger="load" hx-get="/todos" class="list flow"></div>
-          <button
-            class="hover-outline-2 gray-10 hover-gray-0"
-            hx-get="/posts"
-            hx-swap="outerHTML"
-          >
-            Get Posts
-          </button>
+          <section class="flow p-1 border-1">
+            <div hx-trigger="load" hx-get="/form" hx-swap="outerHTML"></div>
+            <div hx-trigger="load" hx-get="/todos" class="list flow"></div>
+          </section>
+          <section>
+            <button
+              class="hover-outline-2 gray-10 hover-gray-0"
+              hx-post="/posts/order"
+              hx-swap="outerHTML"
+            >
+              Get Posts
+            </button>
+          </section>
         </div>
       </main>
     </body

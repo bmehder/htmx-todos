@@ -16,7 +16,7 @@ app.get('/form', routeHandlers.getForm)
 
 app.post('/todos', routeHandlers.addTodo)
 
-app.post('/posts/order', routeHandlers.getPosts)
+app.post('/posts/:order', routeHandlers.getPosts)
 
 app.put('/todos/:id', routeHandlers.toggleTodoComplete)
 

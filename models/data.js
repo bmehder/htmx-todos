@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 import createViewApp from '../views/createViewApp.js'
-import createViewTodoForm from '../views/todos/createViewTodoForm.js'
+import createViewTodosForm from '../views/todos/createViewTodosForm.js'
 import createViewTodos from '../views/todos/createViewTodos.js'
 import createViewPosts from '../views/posts/createViewPosts.js'
 
@@ -16,7 +16,7 @@ const routeHandlers = {
 
 	getTodos: (_, res) => res.send(createViewTodos(todos)),
 
-	getForm: (_, res) => res.send(createViewTodoForm()),
+	getForm: (_, res) => res.send(createViewTodosForm()),
 
 	addTodo: (req, res) => {
 		const { text } = req.body

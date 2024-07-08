@@ -20,5 +20,5 @@ app.put('/todos/:id', routeHandlers.toggleTodoComplete)
 
 app.delete('/todos/:id', routeHandlers.deleteTodo)
 
-//Listen on port 3000
+// Listen on port 3000
 app.listen(3000, () => console.log('Listening on port 3000'))

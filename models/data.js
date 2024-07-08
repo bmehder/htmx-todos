@@ -43,6 +43,30 @@ const routeHandlers = {
 			.then(data => res.send(createViewPosts(data)))
 	},
 
+	getPostsByTitleAsc: (req, res) => {
+		const { order } = req.body
+
+		const sortByTitleAsc = (a, b) =>
+			a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+
+		const sortByTitleDesc = (a, b) =>
+			b.title.toLowerCase().localeCompare(a.title.toLowerCase())
+
+		const sortData = (order, data) =>
+			order === 'asc'
+				? data.toSorted(sortByTitleAsc)
+				: order === 'desc'
+				? data.toSorted(sortByTitleDesc)
+				: data
+
+		fetch('https://jsonplaceholder.typicode.com/posts')
+			.then(res => res.json())
+			.then(data => {
+				const sortedData = sortData(order, data)
+				res.send(createViewPosts(sortedData, order))
+			})
+	},
+
 	toggleTodoComplete: (req, res) => {
 		const idx = getTodoIndexById(req.params.id)
 

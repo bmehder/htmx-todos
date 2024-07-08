@@ -18,6 +18,8 @@ app.post('/todos', routeHandlers.addTodo)
 
 app.get('/posts', routeHandlers.getPosts)
 
+app.post('/posts/order', routeHandlers.getPostsByTitleAsc)
+
 app.put('/todos/:id', routeHandlers.toggleTodoComplete)
 
 app.delete('/todos/:id', routeHandlers.deleteTodo)

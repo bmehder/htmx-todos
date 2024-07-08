@@ -15,7 +15,7 @@ const createViewApp = () => /*html*/ `
         <div class="max-width-sm mx-auto p-2 flow">
           <h1 class="text-center">HTMX Todo List</h1>
           <div hx-trigger="load" hx-get="/form" hx-swap="outerHTML"></div>
-          <div hx-trigger="load" hx-get="/todos" class="list flow p-1 border-1"></div>
+          <div hx-trigger="load" hx-get="/todos" class="list flow"></div>
           <button
             class="hover-outline-2 gray-10 hover-gray-0"
             hx-get="/posts"

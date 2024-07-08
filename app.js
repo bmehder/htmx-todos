@@ -1,5 +1,5 @@
 import express from 'express'
-import routeHandlers from './models/todos.js'
+import routeHandlers from './models/data.js'
 
 // Create server
 const app = express()
@@ -15,6 +15,8 @@ app.get('/todos', routeHandlers.getTodos)
 app.get('/form', routeHandlers.getForm)
 
 app.post('/todos', routeHandlers.addTodo)
+
+app.get('/posts', routeHandlers.getPosts)
 
 app.put('/todos/:id', routeHandlers.toggleTodoComplete)
 

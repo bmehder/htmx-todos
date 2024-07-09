@@ -9,7 +9,7 @@ const createViewPosts = (posts, option = 'id') => /*html*/ `
         id="order"
         class="p-0-5"
         name="order"
-        hx-post="/posts/${order}"
+        hx-post="/posts/order"
         hx-target=".posts"
         hx-swap="outerHTML"
       >

@@ -1,9 +1,9 @@
 import createViewPost from './createViewPost.js'
 
 const createViewPosts = (posts, order) => /*html*/ `
-  <div class="posts flow">
-    <div class="flex space-between align-items-center gap-1">
-      <h2>${posts.length} Posts</h2>
+  <div class="posts text-flow-1-5">
+    <div class="flex flex-wrap space-between align-items-center gap-1">
+      <h2>Posts (Count: ${posts.length})</h2>
       
       <select
         id="order"
@@ -23,7 +23,9 @@ const createViewPosts = (posts, order) => /*html*/ `
       </select>
     </div>
     
-    ${posts.map(createViewPost).join('')}
+    <div class="auto-fit gap-1-5">
+      ${posts.map(createViewPost).join('')}
+    </div>
   </div>
 `
 

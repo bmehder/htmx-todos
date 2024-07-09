@@ -53,10 +53,7 @@ const routeHandlers = {
 	toggleTodoComplete: (req, res) => {
 		const idx = getTodoIndexById(req.params.id)
 
-		todos = todos.toSpliced(idx, 1, {
-			...todos[idx],
-			complete: !todos[idx].complete,
-		})
+		todos = todos.with(idx, { ...todos[idx], complete: !todos[idx].complete })
 
 		res.send(createViewTodos(todos))
 	},
@@ -67,6 +64,24 @@ const routeHandlers = {
 		todos = todos.toSpliced(idx, 1)
 
 		res.send(createViewTodos(todos))
+	},
+
+	getResult: (req, res) => {
+		const { first, second, operation } = req.body
+
+		const x = Number(first)
+		const y = Number(second)
+
+		const calculation = new Map([
+			['+', x + y],
+			['-', x - y],
+			['*', x * y],
+			['/', x / y],
+		])
+
+		const result = String(calculation.get(operation))
+
+		res.send(result)
 	},
 }
 

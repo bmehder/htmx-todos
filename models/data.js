@@ -27,7 +27,7 @@ const routeHandlers = {
 	},
 
 	getPosts: (req, res) => {
-		const { order } = req.body
+		const { order } = req.params
 
 		const sortByTitleAsc = (a, b) =>
 			a.title.toLowerCase().localeCompare(b.title.toLowerCase())

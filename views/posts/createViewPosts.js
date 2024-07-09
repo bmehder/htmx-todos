@@ -1,6 +1,6 @@
 import createViewPost from './createViewPost.js'
 
-const createViewPosts = (posts, option = 'id') => /*html*/ `
+const createViewPosts = (posts, order) => /*html*/ `
   <div class="posts flow">
     <div class="flex space-between align-items-center gap-1">
       <h2>${posts.length} Posts</h2>
@@ -9,16 +9,16 @@ const createViewPosts = (posts, option = 'id') => /*html*/ `
         id="order"
         class="p-0-5"
         name="order"
-        hx-post="/posts/order"
+        hx-post="/posts"
         hx-target=".posts"
         hx-swap="outerHTML"
       >
-        <option value="id" ${option === 'id' && 'selected'}>Sort by Id</option>
+        <option value="id" ${order === 'id' ? 'selected' : ''}>Sort by Id</option>
         <option value="asc" ${
-					option === 'asc' && 'selected'
+					order === 'asc' ? 'selected' : ''
 				}>Sort by Title (Ascending)</option>
         <option value="desc" ${
-					option === 'desc' && 'selected'
+					order === 'desc' ? 'selected' : ''
 				}>Sort by Title (Decending)</option>
       </select>
     </div>

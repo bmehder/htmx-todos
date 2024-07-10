@@ -1,5 +1,11 @@
 const createViewCalculator = () => /*html*/ `
-  <form hx-post="calculator" hx-target="#calculation-result">
+  <form
+    hx-post="calculator"
+    hx-target="#calculation-result"
+    hx-on::before-request="document
+      .querySelector('#calculation-result')
+      .innerText = ''"
+  >
     <div
       class="grid gap-1 text-center"
       style="grid-template-columns: 1fr auto 1fr auto"

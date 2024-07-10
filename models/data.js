@@ -69,7 +69,7 @@ const routeHandlers = {
 			})
 	},
 
-	getCalculator: (req, res) => res.send(createViewCalculator()),
+	getCalculator: (_, res) => res.send(createViewCalculator()),
 
 	getCalculation: (req, res) => {
 		const { first, second, operation } = req.body

@@ -10,9 +10,9 @@ app.use(express.urlencoded({ extended: false }))
 // Routes
 app.get('/', routeHandlers.getApp)
 
-app.get('/todos', routeHandlers.getTodos)
+app.get('/todos/list', routeHandlers.getTodos)
 
-app.get('/todos/form', routeHandlers.getForm)
+app.get('/todos/form', routeHandlers.getTodosForm)
 
 app.post('/todos', routeHandlers.addTodo)
 
@@ -22,7 +22,9 @@ app.delete('/todos/:id', routeHandlers.deleteTodo)
 
 app.post('/posts', routeHandlers.getPosts)
 
-app.post('/calculator', routeHandlers.getResult)
+app.get('/calculator', routeHandlers.getCalculator)
+
+app.post('/calculator', routeHandlers.getCalculation)
 
 // Listen on port 3000
 app.listen(3000, () => console.log('Listening on port 3000'))

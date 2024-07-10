@@ -17,44 +17,19 @@ const createViewApp = () => /*html*/ `
             <h1 class="text-center">HTMX / Express Demo</h1>
             <section class="flow">
               <div class="max-width-sm mx-auto p-2 flow border-1">
+                <h2>Todo List</h2>
                 <div hx-trigger="load" hx-get="/todos/form" hx-swap="outerHTML"></div>
-                <div hx-trigger="load" hx-get="/todos" class="list flow"></div>
+                <div hx-trigger="load" hx-get="/todos/list" id="list" class="flow"></div>
               </div>
             </section>
             <section>
-              <div class="boxed max-width-sm mx-auto flow">
-                <form hx-post="calculator" hx-target="#calculator-result">
-                  <div
-                    class="grid gap-1 text-center"
-                    style="grid-template-columns: 1fr auto 1fr"
-                  >
-                    <input
-                      class="p-0-5 text-align-inherit"
-                      type="number"
-                      name="first"
-                      value="42"
-                    >
-                    <select class="px-1 py-0-5" name="operation">
-                      <option>+</option>
-                      <option>-</option>
-                      <option>*</option>
-                      <option>/</option>
-                    </select>
-                    <input
-                      class="p-0-5 text-align-inherit"
-                      type="number"
-                      name="second"
-                      value="32"
-                    >
-                    <button
-                      class="hover-outline-2 gray-10 hover-gray-0"
-                      style="grid-column: 1 / span 3"
-                    >
-                      Calculate
-                    </button>
-                  </div>
-                </form>
-                <div id="calculator-result" class="h2 text-center"></div>
+              <div
+                class="boxed max-width-sm mx-auto p-2 flow border-1"
+                hx-trigger="load"
+                hx-get="/calculator"
+                hx-swap="beforeend"
+              >
+                <h2>Calculator</h2>
               </div>
             </section>
             <section>

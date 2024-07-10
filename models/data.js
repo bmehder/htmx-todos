@@ -3,6 +3,7 @@ import createViewApp from '../views/createViewApp.js'
 import createViewTodosForm from '../views/todos/createViewTodosForm.js'
 import createViewTodos from '../views/todos/createViewTodos.js'
 import createViewPosts from '../views/posts/createViewPosts.js'
+import createViewCalculator from '../views/calculator/createViewCalculator.js'
 
 // Data Models
 let todos = []
@@ -16,12 +17,30 @@ const routeHandlers = {
 
 	getTodos: (_, res) => res.send(createViewTodos(todos)),
 
-	getForm: (_, res) => res.send(createViewTodosForm()),
+	getTodosForm: (_, res) => res.send(createViewTodosForm()),
 
 	addTodo: (req, res) => {
 		const { text } = req.body
 
 		todos = [...todos, { id: crypto.randomUUID(), text, complete: false }]
+
+		res.send(createViewTodos(todos))
+	},
+
+	toggleTodoComplete: (req, res) => {
+		const idx = getTodoIndexById(req.params.id)
+
+		const selectedTodo = todos[idx]
+
+		todos = todos.with(idx, { ...selectedTodo, complete: !selectedTodo.complete })
+
+		res.send(createViewTodos(todos))
+	},
+
+	deleteTodo: (req, res) => {
+		const idx = getTodoIndexById(req.params.id)
+
+		todos = todos.toSpliced(idx, 1)
 
 		res.send(createViewTodos(todos))
 	},
@@ -50,23 +69,9 @@ const routeHandlers = {
 			})
 	},
 
-	toggleTodoComplete: (req, res) => {
-		const idx = getTodoIndexById(req.params.id)
+	getCalculator: (req, res) => res.send(createViewCalculator()),
 
-		todos = todos.with(idx, { ...todos[idx], complete: !todos[idx].complete })
-
-		res.send(createViewTodos(todos))
-	},
-
-	deleteTodo: (req, res) => {
-		const idx = getTodoIndexById(req.params.id)
-
-		todos = todos.toSpliced(idx, 1)
-
-		res.send(createViewTodos(todos))
-	},
-
-	getResult: (req, res) => {
+	getCalculation: (req, res) => {
 		const { first, second, operation } = req.body
 
 		const x = Number(first)
@@ -79,7 +84,7 @@ const routeHandlers = {
 			['/', x / y],
 		])
 
-		const result = String(calculation.get(operation))
+		const result = calculation.get(operation).toLocaleString()
 
 		res.send(result)
 	},

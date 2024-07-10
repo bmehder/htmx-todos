@@ -3,7 +3,7 @@ import createViewPost from './createViewPost.js'
 const createViewPosts = (posts, order) => /*html*/ `
   <div class="posts text-flow-1-5">
     <div class="flex flex-wrap space-between align-items-center gap-1">
-      <h2>Posts (Count: ${posts.length})</h2>
+      <h2>Posts – ${posts.length} results</h2>
       
       <select
         id="order"

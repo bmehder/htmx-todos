@@ -1,7 +1,7 @@
 const createViewForm = () => /*html*/ `
     <form
       hx-post="/todos"
-      hx-target=".list"
+      hx-target="#list"
       hx-on::after-request="document.querySelector('form').reset()"
       class="grid gap-1"
     >

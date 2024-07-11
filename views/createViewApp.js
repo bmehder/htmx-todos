@@ -13,25 +13,27 @@ const createViewApp = () => /*html*/ `
     <body>
       <main>
         <div class="dvh-100 bg-gray-10 gray-0">
-          <div class="boxed py-2 text-flow-2">
+          <div class="boxed py-2 text-flow-2" style="--lg: 69rem;">
             <h1 class="text-center">HTMX / Express Demo</h1>
-            <section class="flow">
-              <div class="max-width-sm mx-auto p-2 flow border-1">
-                <h2>Todo List</h2>
-                <div hx-trigger="load" hx-get="/todos/form" hx-swap="outerHTML"></div>
-                <div hx-trigger="load" hx-get="/todos/list" id="list" class="flow"></div>
-              </div>
-            </section>
-            <section>
-              <div
-                class="boxed max-width-sm mx-auto p-2 flow border-1"
-                hx-trigger="load"
-                hx-get="/calculator"
-                hx-swap="beforeend"
-              >
-                <h2>Calculator</h2>
-              </div>
-            </section>
+            <div class="auto-fit gap-2">
+              <section>
+                <div class="mx-auto p-2 flow border-1">
+                  <h2>Todo List</h2>
+                  <div hx-trigger="load" hx-get="/todos/form" hx-swap="outerHTML"></div>
+                  <div hx-trigger="load" hx-get="/todos/list" id="list" class="flow"></div>
+                </div>
+              </section>
+              <section>
+                <div
+                  class="mx-auto p-2 flow border-1"
+                  hx-trigger="load"
+                  hx-get="/calculator"
+                  hx-swap="beforeend"
+                >
+                  <h2>Calculator</h2>
+                </div>
+              </section>
+            </div>
             <section>
               <button
                 class="block mx-auto hover-outline-2 gray-10 hover-gray-0"

@@ -22,6 +22,8 @@ app.delete('/todos/:id', routeHandlers.deleteTodo)
 
 app.post('/posts', routeHandlers.getPosts)
 
+app.delete('/posts', routeHandlers.deletePosts)
+
 app.get('/calculator', routeHandlers.getCalculator)
 
 app.post('/calculator', routeHandlers.getCalculation)

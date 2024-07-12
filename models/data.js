@@ -3,6 +3,7 @@ import createViewApp from '../views/createViewApp.js'
 import createViewTodosForm from '../views/todos/createViewTodosForm.js'
 import createViewTodos from '../views/todos/createViewTodos.js'
 import createViewPosts from '../views/posts/createViewPosts.js'
+import createViewGetPostsButton from '../views/posts/createViewGetPostsButton.js'
 import createViewBooks from '../views/books/createViewBooks.js'
 import createViewCalculator from '../views/calculator/createViewCalculator.js'
 
@@ -55,20 +56,22 @@ const routeHandlers = {
 		const sortByTitleDesc = (a, b) =>
 			b.title.toLowerCase().localeCompare(a.title.toLowerCase())
 
-		const sortData = (order, data) =>
-			order === 'asc'
-				? data.toSorted(sortByTitleAsc)
-				: order === 'desc'
-				? data.toSorted(sortByTitleDesc)
-				: data
-
 		fetch('https://jsonplaceholder.typicode.com/posts')
 			.then(res => res.json())
 			.then(data => {
-				const sortedData = sortData(order, data)
+				const sortMap = new Map([
+					['asc', data.toSorted(sortByTitleAsc)],
+					['desc', data.toSorted(sortByTitleDesc)],
+				])
+
+				const sortedData = sortMap.get(order) ?? data
+
 				res.send(createViewPosts(sortedData, order))
 			})
+			.catch(console.error)
 	},
+
+	deletePosts: (_, res) => res.send(createViewGetPostsButton()),
 
 	getBooks: (_, res) => {
 		const randomNumber = Math.floor(Math.random() * 12) + 1
@@ -76,6 +79,7 @@ const routeHandlers = {
 		fetch(`https://www.anapioficeandfire.com/api/books?pageSize=${randomNumber}`)
 			.then(res => res.json())
 			.then(data => res.send(createViewBooks(data)))
+			.catch(_ => undefined)
 	},
 
 	getCalculator: (_, res) => res.send(createViewCalculator()),

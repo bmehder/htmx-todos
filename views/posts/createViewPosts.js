@@ -3,8 +3,18 @@ import createViewPost from './createViewPost.js'
 const createViewPosts = (posts, order) => /*html*/ `
   <div class="posts text-flow-1-5">
     <div class="flex flex-wrap space-between align-items-center gap-1">
-      <h2>Posts – ${posts.length} results</h2>
-      
+      <div class="flex align-items-center gap-0-5">
+        <button
+          class="p-0 bg-transparent hover-bg-transparent"
+          hx-delete="/posts"
+          hx-target=".posts"
+          hx-swap="outerHTML"
+        >
+          <ion-icon name="close-circle-outline" size="large"></ion-icon>
+        </button>
+        <h2>Posts – ${posts.length} results</h2>
+      </div>
+  
       <select
         id="order"
         class="p-0-5"

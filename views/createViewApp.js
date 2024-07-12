@@ -1,3 +1,5 @@
+import createViewGetPostsButton from '../views/posts/createViewGetPostsButton.js'
+
 const createViewApp = () => /*html*/ `
   <!DOCTYPE html>
   <html>
@@ -35,16 +37,13 @@ const createViewApp = () => /*html*/ `
               </section>
             </div>
             <section>
-              <button
-                class="block mx-auto hover-outline-2 gray-10 hover-gray-0"
-                hx-post="/posts"
-                hx-swap="outerHTML"
-              >
-                Get Posts
-              </button>
+              ${createViewGetPostsButton()}
             </section>
             <section>
-              <div hx-trigger="every 3s" hx-get="/books"></div>
+              <div class="flow">
+                <h2>Polling Data every 3 seconds</h2>
+                <div hx-trigger="load, every 3s" hx-get="/books"></div>
+              </div>
             </section>
           </div>
         </div>

@@ -10,11 +10,11 @@ app.use(express.urlencoded({ extended: false }))
 // Routes
 app.get('/', routeHandlers.getApp)
 
+app.post('/todos', routeHandlers.addTodo)
+
 app.get('/todos/list', routeHandlers.getTodos)
 
 app.get('/todos/form', routeHandlers.getTodosForm)
-
-app.post('/todos', routeHandlers.addTodo)
 
 app.put('/todos/:id', routeHandlers.toggleTodoComplete)
 

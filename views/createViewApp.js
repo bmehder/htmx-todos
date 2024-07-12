@@ -15,7 +15,7 @@ const createViewApp = () => /*html*/ `
         <div class="dvh-100 bg-gray-10 gray-0">
           <div class="boxed py-2 text-flow-2" style="--lg: 69rem;">
             <h1 class="text-center">HTMX / Express Demo</h1>
-            <div class="auto-fit gap-2">
+            <div class="grid auto-fit gap-2">
               <section>
                 <div class="mx-auto p-2 flow border-1">
                   <h2>Todo List</h2>

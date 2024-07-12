@@ -84,9 +84,9 @@ const routeHandlers = {
 			['/', x / y],
 		])
 
-		const result = calculation.get(operation)
+		const result = calculation.get(operation).toLocaleString()
 
-		res.send(result.toLocaleString())
+		res.send(result)
 	},
 }
 

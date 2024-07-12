@@ -9,9 +9,7 @@ const createViewCalculator = () => /*html*/ `
     <style>
       .container-inline-size > * {
         @container (width >= 20rem) {
-          display: grid;
           grid-template-columns: 1fr auto 1fr auto;
-          gap: 1rem;
           & > * {
             margin-block-start: 0;
           }
@@ -19,7 +17,7 @@ const createViewCalculator = () => /*html*/ `
       }
     </style>
     <div class="container-inline-size">
-      <div class="flow text-center">
+      <div class="grid gap-1 text-center">
         <input
           class="full-width p-0-5 text-align-inherit"
           type="number"
@@ -41,14 +39,10 @@ const createViewCalculator = () => /*html*/ `
         <button class="full-width hover-outline-2 gray-10 hover-gray-0">
           Calculate
         </button>
-        <div
-          id="calculation-result"
-          class="text-center h2"
-          style="grid-column: span 4"
-        ></div>
       </div>
     </div>
   </form>
+  <div id="calculation-result" class="text-center h2"></div>
 `
 
 export default createViewCalculator

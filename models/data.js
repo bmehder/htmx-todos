@@ -3,6 +3,7 @@ import createViewApp from '../views/createViewApp.js'
 import createViewTodosForm from '../views/todos/createViewTodosForm.js'
 import createViewTodos from '../views/todos/createViewTodos.js'
 import createViewPosts from '../views/posts/createViewPosts.js'
+import createViewBooks from '../views/books/createViewBooks.js'
 import createViewCalculator from '../views/calculator/createViewCalculator.js'
 
 // Data Models
@@ -67,6 +68,14 @@ const routeHandlers = {
 				const sortedData = sortData(order, data)
 				res.send(createViewPosts(sortedData, order))
 			})
+	},
+
+	getBooks: (_, res) => {
+		const randomNumber = Math.floor(Math.random() * 12) + 1
+
+		fetch(`https://www.anapioficeandfire.com/api/books?pageSize=${randomNumber}`)
+			.then(res => res.json())
+			.then(data => res.send(createViewBooks(data)))
 	},
 
 	getCalculator: (_, res) => res.send(createViewCalculator()),

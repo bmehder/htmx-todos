@@ -43,6 +43,9 @@ const createViewApp = () => /*html*/ `
                 Get Posts
               </button>
             </section>
+            <section>
+              <div hx-trigger="every 3s" hx-get="/books"></div>
+            </section>
           </div>
         </div>
       </main>

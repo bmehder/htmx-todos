@@ -1,9 +1,9 @@
 const createViewCalculator = () => /*html*/ `
   <form
     hx-post="calculator"
-    hx-target="#calculation-result"
+    hx-target="#result"
     hx-on::before-request="document
-      .querySelector('#calculation-result')
+      .querySelector('#result')
       .innerText = ''"
   >
     <style>
@@ -42,7 +42,7 @@ const createViewCalculator = () => /*html*/ `
       </div>
     </div>
   </form>
-  <div id="calculation-result" class="text-center h2"></div>
+  <div id="result" class="text-center h2"></div>
 `
 
 export default createViewCalculator

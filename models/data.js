@@ -4,7 +4,7 @@ import createViewTodosForm from '../views/todos/createViewTodosForm.js'
 import createViewTodos from '../views/todos/createViewTodos.js'
 import createViewPosts from '../views/posts/createViewPosts.js'
 import createViewGetPostsButton from '../views/posts/createViewGetPostsButton.js'
-import createViewBooks from '../views/books/createViewBooks.js'
+import createViewCurrencies from '../views/currencies/createViewCurrencies.js'
 import createViewCalculator from '../views/calculator/createViewCalculator.js'
 
 // Data Models
@@ -73,13 +73,11 @@ const routeHandlers = {
 
 	deletePosts: (_, res) => res.send(createViewGetPostsButton()),
 
-	getBooks: (_, res) => {
-		const randomNumber = Math.floor(Math.random() * 12) + 1
-
-		fetch(`https://www.anapioficeandfire.com/api/books?pageSize=${randomNumber}`)
+	getCurrencies: (_, res) => {
+		fetch(`https://api.coincap.io/v2/assets`)
 			.then(res => res.json())
-			.then(data => res.send(createViewBooks(data)))
-			.catch(_ => undefined)
+			.then(data => res.send(createViewCurrencies(data.data)))
+			.catch(console.error)
 	},
 
 	getCalculator: (_, res) => res.send(createViewCalculator()),
@@ -99,7 +97,11 @@ const routeHandlers = {
 
 		const result = calculation.get(operation).toLocaleString()
 
-		res.send(result)
+		res.send(
+			`<div id='result' class='text-center h2'>
+				${result}
+			</div>`
+		)
 	},
 }
 

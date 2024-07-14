@@ -42,7 +42,7 @@ const createViewApp = () => /*html*/ `
             <section>
               <div class="flow">
                 <h2>Polling Data every 3 seconds</h2>
-                <div hx-trigger="load, every 3s" hx-get="/books"></div>
+                <div hx-trigger="load, every 3s" hx-get="/currencies"></div>
               </div>
             </section>
           </div>

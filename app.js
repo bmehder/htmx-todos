@@ -28,7 +28,7 @@ app.get('/calculator', routeHandlers.getCalculator)
 
 app.post('/calculator', routeHandlers.getCalculation)
 
-app.get('/books', routeHandlers.getBooks)
+app.get('/currencies', routeHandlers.getCurrencies)
 
 // Listen on port 3000
 app.listen(3000, () => console.log('Listening on port 3000'))

@@ -7,6 +7,7 @@ const createViewTodo = todo => /*html*/ `
       hx-delete="todos/${todo.id}"
       hx-confirm="Are you sure you want to delete this todo item?"
       hx-target="#list"
+      hx-swap="innerHTML transition:true"
       class="p-0 bg-transparent hover-bg-transparent"
     >
       <ion-icon name="trash" size="large"></ion-icon>
